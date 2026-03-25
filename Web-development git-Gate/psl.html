@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahore Qalandars Playing 11</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .header { 
+            background-color: #00a651; /* Qalandars Green */
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .player-card {
+            transition: transform 0.3s;
+            border: none;
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .player-img-container {
+            position: relative; /* Badge ko position karne ke liye zaroori hai */
+        }
+
+        .player-img-container img {
+            height: 300px;
+            object-fit: cover; /* Photo stretch nahi hogi */
+            width: 100%;
+        }
+
+        .player-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Lahore Qalandars Playing 11</h1>
+            <p class="lead">PSL 2026 Edition</p>
+        </div>
+    </header>
+
+    <!-- Players Grid -->
+    <div class="container mb-5">
+        <div class="row g-4"> <!-- g-4 manages the fluid gap -->
+            
+            <!-- Player 1: Captain -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 player-card shadow-sm">
+                    <div class="player-img-container">
+                        <!-- Twist: The Badge -->
+                        <span class="badge bg-danger player-badge">Captain</span>
+                        <img src="web/learning-folder/pl1.PNG" class="card-img-top" alt="Shaheen">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Shaheen Afridi</h5>
+                        <p class="card-text text-muted">Bowler</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 2: Foreign -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 player-card shadow-sm">
+                    <div class="player-img-container">
+                        <span class="badge bg-primary player-badge">Foreign</span>
+                        <img src="https://via.placeholder.com" class="card-img-top" alt="Rashid Khan">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Rashid Khan</h5>
+                        <p class="card-text text-muted">All-Rounder</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 3: Wicket Keeper -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 player-card shadow-sm">
+                    <div class="player-img-container">
+                        <span class="badge bg-warning text-dark player-badge">Wicket Keeper</span>
+                        <img src="https://via.placeholder.com" class="card-img-top" alt="Player">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Shai Hope</h5>
+                        <p class="card-text text-muted">Batsman</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mazeed 8 players ke liye isi div ko repeat karein -->
+
+        </div>
+    </div>
+
+    <footer class="text-center py-4 bg-dark text-white">
+        <p>&copy; 2026 Lahore Qalandars Fan Page</p>
+    </footer>
+
+</body>
+</html>
