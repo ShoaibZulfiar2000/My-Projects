@@ -1,0 +1,25 @@
+<!-- Styled with Tailwind CSS for simplicity -->
+<body class="transition-colors duration-500 flex items-center justify-center h-screen">
+    <button id="mood-btn" class="bg-white px-6 py-3 rounded-full shadow-lg font-bold uppercase tracking-widest hover:scale-105 transition-transform">
+        Change Mood
+    </button>
+
+    <script>
+        (function() {
+            // Private data: hidden from the global scope (window)
+            const colors = ['lightblue', 'lightgreen', 'lightcoral', '#fef3c7', '#ddd6fe'];
+            let currentIndex = 0;
+
+            const btn = document.getElementById('mood-btn');
+
+            btn.addEventListener('click', function() {
+                // Update state securely inside this closure
+                currentIndex = (currentIndex + 1) % colors.length;
+                document.body.style.backgroundColor = colors[currentIndex];
+                
+                console.log(`Mood set to: ${colors[currentIndex]}`);
+            });
+        })(); 
+        // Any attempt to access 'colors' out here will result in an Error.
+    </script>
+</body>
