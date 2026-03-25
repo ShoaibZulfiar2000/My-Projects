@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero-header {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                              url('https://bhojmasale.com/cdn/shop/articles/chai-paratha-recipe-874864_1024x1024.jpg?v=1739152988'); 
+            background-size: cover;
+            background-position: center;
+            height: 70vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: rgb(167, 167, 74); 
+            padding: 15px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav li { color: white; cursor: pointer; }
+
+        /* CONCEPT: The Flexbox Container */
+        .Home-Container {
+            display: flex;
+            flex-wrap: wrap;       /* Items niche drop honge agar jagah nahi hogi */
+            justify-content: center; 
+            gap: 20px;             
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        /* CONCEPT: Image Size Control */
+        .Home-Container img {
+            flex-basis: 250px;     /* Ideal width for each image */
+            width: 250px;
+            height: 200px;
+            object-fit: cover;     /* Image stretch nahi hogi */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        section { width: 100%; padding: 40px; text-align: center; }
+        .price { color: red; font-weight: bold; }
+    </style>
+    <title>Quetta Chai</title>
+</head>
+<body>
+
+    <header class="hero-header">
+        <h1>Quetta Chai</h1>
+        <p>Best Chai in Town</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- CORRECTED: Yahan <Home> tag ghalat tha, hum ne section use kiya -->
+        <section class="Home-Container">
+            <img src="img (2).png" alt="Shakr chai">
+            <img src="img (3).png" alt="Allu wala paratha">
+            <img src="img (4).png" alt="paratha">
+            <img src="img (5).png" alt="paratha">
+        </section>
+
+        <section id="Menu">
+            <h2>Select Your Order</h2>
+            <br>
+            <select>
+                <option>Chai - Rs. 50</option>
+                <option>Special Chai - Rs. 80</option>
+                <option>Paratha - Rs. 60</option>
+            </select>   
+        </section>
+    </main>
+
+</body>
+</html>
