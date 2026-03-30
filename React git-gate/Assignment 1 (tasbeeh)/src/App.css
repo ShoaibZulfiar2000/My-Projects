@@ -1,0 +1,36 @@
+/* src/App.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.counter-number {
+  font-size: 250px; /* Massive Number */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.btn-group {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 15px 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-count { background-color: #28a745; } /* Green */
+.btn-reset { background-color: #dc3545; } /* Red */
+
+.btn:hover { opacity: 0.8; transform: scale(1.1); }
