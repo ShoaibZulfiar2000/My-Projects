@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        .hero-header {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("header-img.png");
+            background-size: cover; background-position: center; height: 40vh; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        }
+        .nav { background-color: rgb(128, 88, 29); padding: 15px; }
+        .nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; }
+        .nav li { color: white; cursor: pointer; }
+        .Home-Container { display: flex; overflow-x: auto; gap: 20px; padding: 40px; background-color: #f4f4f4; }
+        .Home-Container img { flex: 0 0 250px; height: 200px; object-fit: cover; border-radius: 10px; }
+        section { width: 100%; padding: 40px; text-align: center; }
+        
+        /* Counter Styling */
+        #displayorder { 
+            margin-top: 20px; 
+            font-size: 20px; 
+            font-weight: bold; 
+            color: rgb(128, 88, 29); 
+        }
+        button { padding: 10px 20px; cursor: pointer; margin: 5px; }
+    </style>
+    <title>Food Street</title>
+</head>
+<body>
+
+    <header class="hero-header">
+        <h1>Food Street</h1>
+        <p>Best Food in Town</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="Home-Container">
+            <img src="karahi.png" alt="karahi">
+            <img src="biryani.png" alt="biryani">
+            <img src="kabab.png" alt="Kabab">
+            <img src="img (3).png" alt="Allu wala paratha">
+            <img src="img (4).png" alt="paratha">
+        </section>
+
+        <section id="Menu">
+            <h2>Select Your Order</h2>
+            <br>
+            <select id="itemSelect">
+                <option>Biryani - Rs. 600</option>
+                <option>Karahi - Rs. 1200</option>
+                <option>Seekh Kabab - Rs. 120</option>
+                <option>Chai - Rs. 50</option>
+            </select> 
+            
+            <div style="margin-top: 20px;">
+                <button onclick="addorder()">Add Order</button>
+                <button onclick="removeorder()">Remove Order</button>
+                <!-- Counter Display Yahan Hoga -->
+                <p id="displayorder">Total orders: 0</p>
+            </div>  
+        </section>
+    </main>
+
+<script>
+    let count = 0;
+    let displayorder = document.getElementById("displayorder");
+
+    // Display update karne ka function
+    function updatedisplay() {
+        displayorder.innerText = "Total orders: " + count;
+    }
+
+    function addorder() {
+        count++;
+        updatedisplay();
+    }
+
+    function removeorder() {
+        if (count > 0) {
+            count--;
+            updatedisplay();
+        } else {
+            displayorder.innerText = "No order selected!";
+        }
+    }
+</script>
+
+</body>
+</html>

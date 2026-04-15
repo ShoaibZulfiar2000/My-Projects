@@ -115,14 +115,57 @@
         
     </main>
 <script>
-let count=0;
-let displaytag =document.getElementById("displayorder");
-function addorder(){
+let count = 0;
+let displayorder= document.getElementById("displayorder");
+function addorder()
+{
+         count++;
+         displayorder.innerText="";
+         updatedisplay();
+            }
+function removeorder()
+{
+    if (count===0){
+        displayorder.innerText="Not order Select";
+        updatedisplay();
+    }
+    else{
+        count--;
+        updatedisplay();
+        
+    }
+    // 4. Update Display Function (Jo aap likhna bhool gaye thay)
+    function updatedisplay() {
+        displayorder.innerText = "Your total orders: " + count;
+    }
+        }
+
+/*<script>
+    // 1. Memory (Global Variable)
+    let count = 0; 
+    let displayorder = document.getElementById("displayorder");
+
+    // 2. Add Order Function
+    function addorder() {
         count++;
-        displaytag.innerText="";
-    updatedisplay();
-}
- 
+        updatedisplay(); // Screen update karne wali machine ko bulaya
+    }
+
+    // 3. Remove Order Function
+    function removeorder() {
+        if (count === 0) { // Check kiya: kya pehle se zero hai?
+            displayorder.innerText = "No order selected";
+        } else {
+            count--;
+            updatedisplay();
+        }
+    }
+
+    // 4. Update Display Function (Jo aap likhna bhool gaye thay)
+    function updatedisplay() {
+        displayorder.innerText = "Your total orders: " + count;
+    }
+
         
 </script>
 
