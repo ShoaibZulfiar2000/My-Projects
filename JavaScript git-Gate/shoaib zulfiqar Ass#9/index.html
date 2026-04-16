@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NADRA Queue System</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-md text-center border-t-8 border-green-800">
+
+    <h1 class="text-2xl font-bold text-green-800 mb-4">
+      NADRA Virtual Queue
+    </h1>
+
+    <!-- Queue Number -->
+    <h2 class="text-xl font-semibold mb-4">
+      Your Queue Number:
+      <span id="queue" class="text-green-700">15</span>
+    </h2>
+
+    <!-- Security Info -->
+    <div class="bg-gray-100 p-3 rounded">
+      <p class="text-sm text-gray-600">Security Check</p>
+      <p id="deviceInfo" class="font-medium text-gray-800"></p>
+    </div>
+
+    <!-- Warning -->
+    <div id="warning" class="hidden mt-4 p-3 bg-red-100 text-red-700 rounded">
+      ⚠ Session Expiring Soon: Please keep this tab open.
+    </div>
+
+  </div>
+
+<script>
+
+// 🔥 QUEUE SYSTEM
+let queueNumber = 15;
+
+const queueEl = document.getElementById("queue");
+const warningEl = document.getElementById("warning");
+
+// ✅ setInterval (every 2 sec)
+const interval = setInterval(() => {
+  queueNumber--;
+
+  queueEl.textContent = queueNumber;
+
+  // stop at 0
+  if (queueNumber <= 0) {
+    clearInterval(interval); // 🔥 IMPORTANT
+
+    // redirect
+    window.location.href = "https://www.google.com";
+  }
+
+}, 2000);
+
+
+// 🔥 DEVICE DETECTION
+const infoEl = document.getElementById("deviceInfo");
+
+let browser = "Unknown";
+let os = "Unknown";
+
+const userAgent = navigator.userAgent;
+
+// browser detect
+if (userAgent.includes("Chrome")) browser = "Chrome";
+else if (userAgent.includes("Firefox")) browser = "Firefox";
+else if (userAgent.includes("Safari")) browser = "Safari";
+
+// OS detect
+if (userAgent.includes("Windows")) os = "Windows";
+else if (userAgent.includes("Android")) os = "Android";
+else if (userAgent.includes("iPhone")) os = "iOS";
+
+// mobile/desktop
+let deviceType = /Mobi|Android/i.test(userAgent) ? "Mobile" : "Desktop";
+
+infoEl.textContent = `${browser} | ${os} | ${deviceType}`;
+
+
+// 🔥 setTimeout (10 sec warning)
+setTimeout(() => {
+  warningEl.classList.remove("hidden");
+}, 10000);
+
+</script>
+
+</body>
+</html>
