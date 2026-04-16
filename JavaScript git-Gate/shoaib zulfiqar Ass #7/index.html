@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyPaisa Iftar Bill Splitter</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-md">
+
+    <!-- Countdown -->
+    <h2 id="countdown" class="text-center text-green-600 font-bold mb-4"></h2>
+
+    <h1 class="text-2xl font-bold text-center text-green-700 mb-6">
+      EasyPaisa Bill Splitter
+    </h1>
+
+    <!-- Inputs -->
+    <input id="bill" type="number" placeholder="Total Bill"
+      class="w-full mb-3 p-2 border rounded">
+
+    <select id="tax" class="w-full mb-3 p-2 border rounded">
+      <option value="5">5% Tax</option>
+      <option value="16">16% Tax</option>
+      <option value="20">20% Tip</option>
+    </select>
+
+    <input id="friends" type="number" placeholder="Number of Friends"
+      class="w-full mb-3 p-2 border rounded">
+
+    <input id="phone" type="text" placeholder="EasyPaisa Phone (03XXXXXXXXX)"
+      class="w-full mb-3 p-2 border rounded">
+
+    <button onclick="calculate()"
+      class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+      Calculate & Request
+    </button>
+
+    <!-- Error -->
+    <p id="error" class="text-red-500 mt-3 text-center"></p>
+
+    <!-- Result -->
+    <ul id="result" class="mt-4 space-y-2"></ul>
+
+  </div>
+
+<script>
+
+// 🔥 Countdown to Eid (example date set)
+function updateCountdown() {
+  const eid = new Date("2026-03-20"); // change if needed
+  const today = new Date();
+
+  const diff = eid - today;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("countdown").innerText =
+    `🌙 Only ${days} days left until Eid!`;
+}
+updateCountdown();
+
+// 🔥 Main Function
+function calculate() {
+  const bill = parseFloat(document.getElementById("bill").value);
+  const tax = document.getElementById("tax").value;
+  const friends = parseInt(document.getElementById("friends").value);
+  const phone = document.getElementById("phone").value;
+
+  const errorEl = document.getElementById("error");
+  const resultEl = document.getElementById("result");
+
+  errorEl.innerText = "";
+  resultEl.innerHTML = "";
+
+  // ✅ Phone validation (RegExp)
+  const phonePattern = /^03\d{9}$/;
+
+  if (!phonePattern.test(phone)) {
+    errorEl.innerText = "Invalid Pakistani phone number!";
+    return;
+  }
+
+  try {
+    // ❌ Custom Error
+    if (friends === 0) {
+      throw new Error("Cannot split a bill with 0 people");
+    }
+
+    let total;
+
+    // ✅ Switch for tax
+    switch (tax) {
+      case "5":
+        total = bill * 1.05;
+        break;
+      case "16":
+        total = bill * 1.16;
+        break;
+      case "20":
+        total = bill * 1.20;
+        break;
+      default:
+        total = bill;
+    }
+
+    const perPerson = total / friends;
+
+    // ✅ Loop for output
+    for (let i = 1; i <= friends; i++) {
+      const li = document.createElement("li");
+      li.className = "bg-gray-100 p-2 rounded shadow";
+      li.innerText = `Friend ${i}: Rs. ${perPerson.toFixed(2)}`;
+      resultEl.appendChild(li);
+    }
+
+  } catch (err) {
+    errorEl.innerText = err.message;
+  }
+}
+
+</script>
+
+</body>
+</html>
