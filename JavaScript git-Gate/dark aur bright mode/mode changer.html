@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Full Page Theme Switcher</title>
+</head>
+<!-- Initial classes for Light Mode -->
+<body id="page" class="bg-white text-gray-900 transition-colors duration-500 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Page Content (Context) -->
+    <div class="max-w-2xl text-center mb-10">
+        <h1 id="heading" class="text-5xl font-bold mb-4">Whole Page Experience</h1>
+        <p class="text-lg opacity-80 mb-6">
+            Ye page ab mukammal taur par apna rang badal sakta hai. Jab aap niche diye gaye button par click karenge, 
+            to sirf button nahi balkay background, text, aur elements sab dark mode mein switch ho jayenge.
+        </p>
+        
+        <!-- Info Card -->
+        <div id="info-card" class="bg-gray-100 p-6 rounded-2xl border border-gray-200 transition-all duration-500 shadow-sm">
+            <h3 class="font-bold text-xl mb-2">Did you know?</h3>
+            <p>Dark mode aankhon ki thakan (eye strain) kam karne mein madad deta hai, khas taur par raat ke waqt.</p>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button id="mood-btn" class="bg-black text-white px-12 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
+        Bright Mode: ON
+    </button>
+
+    <script>
+        (function() {
+            // Private state for the closure
+            let isDark = false;
+
+            const btn = document.getElementById('mood-btn');
+            const body = document.getElementById('page');
+            const card = document.getElementById('info-card');
+
+            btn.addEventListener('click', function() {
+                isDark = !isDark; // Toggle state
+
+                if (isDark) {
+                    // SWITCH TO DARK MODE
+                    body.style.backgroundColor = "#09090b"; // Zinc-950 color
+                    body.style.color = "#ffffff";
+                    
+                    card.style.backgroundColor = "#18181b"; // Zinc-900 color
+                    card.style.borderColor = "#27272a";
+                    
+                    btn.innerText = "Dark Mode: ON";
+                    btn.style.backgroundColor = "white";
+                    btn.style.color = "black";
+                } else {
+                    // SWITCH TO BRIGHT MODE
+                    body.style.backgroundColor = "#ffffff";
+                    body.style.color = "#111827"; // Gray-900
+                    
+                    card.style.backgroundColor = "#f3f4f6"; // Gray-100
+                    card.style.borderColor = "#e5e7eb";
+                    
+                    btn.innerText = "Bright Mode: ON";
+                    btn.style.backgroundColor = "black";
+                    btn.style.color = "white";
+                }
+
+                console.log("Theme switched to: " + (isDark ? "Dark" : "Bright"));
+            });
+        })();
+    </script>
+</body>
+</html>
